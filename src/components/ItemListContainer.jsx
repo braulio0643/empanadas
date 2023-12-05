@@ -1,9 +1,14 @@
 import React from 'react'
 import ItemList from './ItemList'
+import NavBar from './NavBar'
 
-const ItemListContainer = () => {
+const ItemListContainer = ({mensaje}) => {
     return (
-        <div>ItemListContainer</div>
+        <div>
+            <ItemList
+            mensaje={mensaje}
+            />
+        </div>
     )
 }
 
