@@ -3,12 +3,15 @@ import ItemListContainer from './components/ItemListContainer'
 import './App.css'
 import NavBar from './components/NavBar'
 
-const App = () => {
 
-  const mensaje= "Bienvenido a la mejor empanadería de Argentina!"
+const App = () => {
+  const carro = 1
+  const mensaje= "Las mejores empanadas de Argentina!"
   return (
       <div>
-        <NavBar/>
+        <NavBar
+          carro={carro}
+        />
         <ItemListContainer
           mensaje={mensaje}
         />

@@ -1,9 +1,11 @@
 import React from 'react'
+import carrito from '../multimedia/carrito.png'
 
-const CartWidget = () => {
+const CartWidget = ({carro}) => {
     return (
-        <div>
-            
+        <div className='carrito'>
+            <img src={carrito} alt="" />
+            <p>{carro}</p>
         </div>
     )
 }
