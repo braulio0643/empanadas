@@ -1,18 +1,56 @@
 import React from 'react'
 import CartWidget from './CartWidget'
 import logo from '../multimedia/logo.png'
+import { Link } from "react-router-dom"
+import {
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    MenuItemOption,
+    MenuGroup,
+    MenuOptionGroup,
+    MenuDivider,
+  } from '@chakra-ui/react'
 
 const NavBar = ({carro}) => {
     return (
         <div>
             <ul className='nav'>
-                <li><img className='logo' src={logo} alt="" /></li>
-                <li>Inicio</li>
-                <li>Productos</li>
-                <li>Contacto</li>
-                <CartWidget
-                carro={carro}
-                />
+                <Link to={"/"}>
+                    <li><img className='logo' src={logo} alt="" /></li>
+                </Link>
+
+                <Link to={"/"}>
+                    <li>Inicio</li>
+                </Link>
+
+                <li>
+                    <Menu>
+                        <MenuButton>
+                            Categoría
+                        </MenuButton>
+                        <MenuList>
+                            <Link to={"/category/empanadas"}>
+                                <MenuItem>Empanadas</MenuItem>
+                            </Link>
+                            <Link to={"/category/pizzas"}>
+                                <MenuItem>Pizzas</MenuItem>
+                            </Link>
+                        </MenuList>
+                    </Menu>
+                </li>
+                
+                <Link to={"/contact"}>
+                    <li>Contacto</li>
+                </Link>
+                
+                <Link to={"/cart"}>
+                    <CartWidget
+                    carro={carro}
+                    />
+                </Link>
+                
             </ul>
         </div>
     )

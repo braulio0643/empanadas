@@ -1,9 +1,8 @@
 import React from 'react'
-import ItemList from './ItemList'
+import ItemDetail from './ItemDetail'
 import { useParams } from 'react-router-dom'
 
-
-const ItemListContainer = ({mensaje}) => {
+const ItemDetailContainer = () => {
     let productos = [
         { id: 0, category: "empanadas", title: "Empanada J&Q", description: "Contiene Jamón y Queso", price:"600"},
         { id: 1, category: "empanadas", title: "Empanada Carne", description: "Contiene Carne, Aceituna, Papa", price:"600"},
@@ -16,28 +15,18 @@ const ItemListContainer = ({mensaje}) => {
     ]
 
     const { id } = useParams()
-    console.log(id)
-    
-    const getProductos = () => {
-        if(productos.length>0){
-            if (id == "empanadas"){
-                return(productos.filter((p) => p.category == "empanadas"))
-            } else if (id == "pizzas"){
-                return(productos.filter((p) => p.category == "pizzas"))
-            } else {
-                return(productos)
-            }
-        }  
-    }
+
+    let productId= productos[id]
 
     return (
         <div>
-            <ItemList
-                mensaje={mensaje}
-                productos={getProductos()}
+            <ItemDetail
+                title= {productId.title}
+                description= {productId.description}
+                price= {productId.price}
             />
         </div>
     )
 }
 
-export default ItemListContainer
+export default ItemDetailContainer
