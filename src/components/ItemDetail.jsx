@@ -1,7 +1,10 @@
 import React from 'react'
 import {Card, CardHeader, Heading, CardBody, Text, CardFooter, Button} from '@chakra-ui/react'
+import ItemCount from './ItemCount'
 
-const ItemDetail = ({title, description, price}) => {
+const ItemDetail = ({title, description, price, id}) => {
+
+
     return(
         <div className='inicio'>
             <Card>
@@ -14,9 +17,7 @@ const ItemDetail = ({title, description, price}) => {
                 <CardFooter>
                     <Text>${price}</Text>
                 </CardFooter>
-                <Button>
-                    <Text>Agregar al carrito</Text>
-                </Button>
+                <ItemCount title= {title} price = {price} id= {id}/>
             </Card>
         </div>
     )

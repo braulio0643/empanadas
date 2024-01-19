@@ -5,9 +5,8 @@ import Contact from './components/Contact'
 import Cart from './components/Cart'
 import './App.css'
 import NavBar from './components/NavBar'
-import {  } from "./components/ItemDetailContainer";
 import { BrowserRouter, Routes, Route, Link} from 'react-router-dom'
-
+import ShoppingCartContext from './context/ShoppingCartContext'
 
 
 const App = () => {
@@ -15,9 +14,8 @@ const App = () => {
   const mensaje= "Las mejores empanadas de Argentina!"
   return (
     <BrowserRouter>
-          <NavBar
-            carro={carro}
-          />
+      <ShoppingCartContext>
+          <NavBar carro={carro}/>
           <Routes>
             <Route exact path='/' element={<ItemListContainer/>} />
             <Route exact path='/category/:id' element={<ItemListContainer/>} />
@@ -25,6 +23,7 @@ const App = () => {
             <Route exact path='/contact' element={<Contact/>} />
             <Route exact path='/cart' element={<Cart/>} />
           </Routes>
+      </ShoppingCartContext>
     </BrowserRouter>
   )
 }

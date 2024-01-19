@@ -24,6 +24,7 @@ const ItemDetailContainer = () => {
                 title= {productId.title}
                 description= {productId.description}
                 price= {productId.price}
+                id = {productId.id}
             />
         </div>
     )
