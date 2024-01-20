@@ -15,9 +15,12 @@ export const ShoppingCartProvider = ({children}) => {
     }
 
     const removeItem = (id) => {
-      /* useEffect(()=> {
-         setCart(cart.filter((p)=> (p.id != id)))
-      }) */
+      /*  for(let i = 0; i < cart.length; i++){
+         if(cart[i].id==id){
+            cart.splice(i, 1)
+         }
+      }  */
+      setCart(cart.filter((p)=>p.id != id))
     }
 
     const clear = () => {
@@ -25,12 +28,12 @@ export const ShoppingCartProvider = ({children}) => {
     }
 
     const isInCart = (id) => {
-      cart.forEach((p) => {
-         if(p.id == id){
+      for(let i = 0; i < cart.length; i++){
+         if(cart[i].id == id){
             return(true)
          }
-      })
-      return(false)
+      }
+      return false
     }
 
     return (

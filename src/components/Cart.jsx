@@ -7,7 +7,6 @@ const Cart = () => {
 
   const { cart, setCart, addItem, removeItem, clear, isInCart} = useContext(CartContext)
   console.log(cart)
-
   return (
     //cambiar classname
     <div className='inicio'>  

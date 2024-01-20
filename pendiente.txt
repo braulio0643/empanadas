@@ -1,0 +1,3 @@
+-como modificar de forma prolija el Cart sin que me tire errores por todos lados?
+tipo reasignarlo sin problemas
+-declarar las funciones en otro componente?
