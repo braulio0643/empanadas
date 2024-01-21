@@ -6,7 +6,7 @@ const ItemDetail = ({title, description, price, id}) => {
 
 
     return(
-        <div className='inicio'>
+        <div className='flexColCenter'>
             <Card>
                 <CardHeader>
                     <Heading size ='md'>{title}</Heading>

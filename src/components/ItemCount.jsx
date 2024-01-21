@@ -8,13 +8,14 @@ import { CartContext } from '../context/ShoppingCartContext'
 
 const ItemCount = ({title, price, id}) => {
 
-    const { cart, setCart, addItem, removeItem, clear, isInCart} = useContext(CartContext)
+    const {addItem} = useContext(CartContext)
 
     const [contador, setContador] = useState(0)
 
     const comprar= () => {
         alert(`Se agregaron ${contador} unidades al carrito`)
         //falta hacer que desaparezca el boton de compra
+        //falta sweet alert
         const producto = {
             title: title,
             price: price,
@@ -22,8 +23,6 @@ const ItemCount = ({title, price, id}) => {
             quantity: contador
         }
         addItem(producto)
-        console.log(cart)
-        // por qué me salen los nombres de cada cosa en vez de su valor directo?
     }
 
     const sumar = () => {

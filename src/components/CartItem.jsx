@@ -16,9 +16,9 @@ const CartItem = ({title, price, id, quantity}) => {
                 <CardHeader>
                     <Heading size ='md'>{title}</Heading>
                 </CardHeader>
-                <CardFooter>
+                <CardFooter className='flexColCenter'>
                     <Text>${price}</Text>
-                    <Text>${quantity} unidades</Text>
+                    <Text>{quantity} unidades</Text>
                 </CardFooter>
                     <Button onClick={()=>{removeItem(id)}}>
                         Eliminar
