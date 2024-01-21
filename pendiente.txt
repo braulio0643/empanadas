@@ -1,3 +1,6 @@
 -empanadas y pizzas custom
 -estética 
 -firebase
+-formulario de compras
+-pizzas chicas y grandes
+-está mal pasar los productos por context? o es mejor hacer varias veces el proceso de pedirle a la base de datos?

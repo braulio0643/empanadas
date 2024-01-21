@@ -1,33 +1,64 @@
 import React from 'react'
 import ItemList from './ItemList'
 import { useParams } from 'react-router-dom'
+import {collection, getDocs, getFirestore} from "firebase/firestore"
+import {useEffect, useState } from 'react'
+import Loader from './Loader'
 
 
 const ItemListContainer = ({mensaje}) => {
-    let productos = [
-        { id: 0, category: "empanadas", title: "Empanada J&Q", description: "Contiene Jamón y Queso", price:"600"},
-        { id: 1, category: "empanadas", title: "Empanada Carne", description: "Contiene Carne, Aceituna, Papa", price:"600"},
-        { id: 2, category: "empanadas", title: "Empanada Pollo", description: "Contiene Pollo, Morrón, y Salsa especial", price:"600"},
-        { id: 3, category: "empanadas", title: "Empanada C&Q", description: "Contiene Cebolla y Queso ", price:"600"},
-        { id: 4, category: "pizzas", title: "Pizza Mozzarella", description: "Contiene queso Mozzarella, Tomate. Rinde para 8 porciones ", price:"4000"},
-        { id: 5, category: "pizzas", title: "Pizza Ananá", description: "Contiene Jamón, Ananá. Rinde para 8 porciones ", price:"4000"},
-        { id: 6, category: "pizzas", title: "Pizza Fugazzetta", description: "Contiene Cebolla, Queso. Rinde para 8 porciones ", price:"4000"},
-        { id: 7, category: "pizzas", title: "Pizza J&Q", description: "Contiene Jamón, Queso, Morrón. Rinde para 8 porciones ", price:"4000"}
-    ]
+    const [loadingEmpanadas, setLoadingEmpanadas] = useState(true)
+    const [loadingPizzas, setLoadingPizzas] = useState(true)
+    const [empanadas, setEmpanadas] = useState([])
+    useEffect(()=>{
+        const db = getFirestore();
+        const empanadasCollection = collection(db,"Empanadas");
+        getDocs(empanadasCollection).then((querySnapshot)=>{
+            const docsEmpanadas = querySnapshot.docs.map((doc)=>({
+                ...doc.data(),
+                id: doc.id,
+            }));
+            setEmpanadas(docsEmpanadas);
+            setLoadingEmpanadas(false)
+        })
 
+    }, [])
+    const [pizzas, setPizzas] = useState([])
+    useEffect(()=>{
+        const db = getFirestore();
+        const pizzasCollection = collection(db,"Pizzas");
+        getDocs(pizzasCollection).then((querySnapshot)=>{
+            const docsPizzas = querySnapshot.docs.map((doc)=>({
+                ...doc.data(),
+                id: doc.id,
+            }));
+            setPizzas(docsPizzas);
+            setLoadingPizzas(false)
+        })
+    }, [])
+    
+    const productos = empanadas.concat(pizzas)
+    console.log(productos)
+    
     const { id } = useParams()
     console.log(id)
-    
+
+
     const getProductos = () => {
         if(productos.length>0){
             if (id == "empanadas"){
-                return(productos.filter((p) => p.category == "empanadas"))
+                return(empanadas)
             } else if (id == "pizzas"){
-                return(productos.filter((p) => p.category == "pizzas"))
+                return(pizzas)
             } else {
                 return(productos)
             }
         }  
+    } 
+
+    if(loadingEmpanadas || loadingPizzas){
+        return <div className='flexColCenter'> <Loader/></div> 
+        
     }
 
     return (
