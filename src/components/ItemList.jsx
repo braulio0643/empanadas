@@ -4,7 +4,7 @@ import Item from './Item'
 const ItemList = ({mensaje, productos}) => {
     console.log(productos)
     return (
-        <div className='inicio'>
+        <div  className='flexWrap'>
             {
                 productos.map((p)=> {
                     return(

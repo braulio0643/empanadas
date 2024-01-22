@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 const Item = ({title, price, id}) => {
     const buttonId= "/item/" + id
     return(
-        <div>
-            <Card>
+        <div className='item'>
+            <Card  className='flexColCenter'>
                 <CardHeader>
                     <Heading size ='md'>{title}</Heading>
                 </CardHeader>

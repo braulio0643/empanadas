@@ -4,18 +4,41 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  background-image:url(https://i.imgur.com/h9qECYt.png) ;
+}
+
+.nav li{
+   font-family:Verdana, Geneva, Tahoma, sans-serif;
+   color: #351d0a;
 }
 
 .inicio, .flexColCenter{
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
+}
+
+.flexWrap{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .carrito{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  gap: 20px;
+}
+
+.fondo{
+  background-color: #EF9A53;
+}
+
+.item{
+  width: 250px;
 }
 
 .logo{

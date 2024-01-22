@@ -58,7 +58,6 @@ const ItemListContainer = ({mensaje}) => {
 
     if(loadingEmpanadas || loadingPizzas){
         return <div className='flexColCenter'> <Loader/></div> 
-        
     }
 
     return (
