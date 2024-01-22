@@ -1,6 +1,5 @@
 -empanadas y pizzas custom
 -estética 
--firebase
--formulario de compras
 -pizzas chicas y grandes
 -está mal pasar los productos por context? o es mejor hacer varias veces el proceso de pedirle a la base de datos?
+-faltaría hacer que despues de finalizar la compra se vacíe el carrito pero sin mostrar "no hay productos en el carrito"
