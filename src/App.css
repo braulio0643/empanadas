@@ -1,10 +1,19 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 
 .nav{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  background-image:url(https://i.imgur.com/h9qECYt.png) ;
+  background-image:url(https://i.imgur.com/zY8ANB3.png) ;
+}
+
+body{
+  background-image: linear-gradient(to right, rgb(247, 168, 51),rgb(243, 190, 111),rgb(247, 168, 51));
+  min-height: 100%;
 }
 
 .nav li{
@@ -22,8 +31,11 @@
 .flexWrap{
   display: flex;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
+  gap: 50px;
+  margin-top: 25px;
 }
 
 .carrito{
@@ -33,12 +45,18 @@
   gap: 20px;
 }
 
-.fondo{
-  background-color: #EF9A53;
+
+
+.chakra-ui-light{
+    min-height: 100%;
 }
 
 .item{
   width: 250px;
+}
+
+.shopItem{
+  padding: 20px;
 }
 
 .logo{

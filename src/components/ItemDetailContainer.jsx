@@ -7,7 +7,7 @@ import Loader from './Loader'
 
 const ItemDetailContainer = () => {
     const [loadingEmpanadas, setLoadingEmpanadas] = useState(true)
-    const [loadingPizzas, setLoadingPizzas] = useState(true)
+
     const [empanadas, setEmpanadas] = useState([])
     useEffect(()=>{
         const db = getFirestore();
@@ -22,25 +22,27 @@ const ItemDetailContainer = () => {
         })
 
     }, [])
-    const [pizzas, setPizzas] = useState([])
+    const [extras, setExtras] = useState([])
+    const [loadingExtras, setLoadingExtras] = useState(true)
     useEffect(()=>{
         const db = getFirestore();
-        const pizzasCollection = collection(db,"Pizzas");
-        getDocs(pizzasCollection).then((querySnapshot)=>{
-            const docsPizzas = querySnapshot.docs.map((doc)=>({
+        const extrasCollection = collection(db,"Extras");
+        getDocs(extrasCollection).then((querySnapshot)=>{
+            const docsExtras = querySnapshot.docs.map((doc)=>({
                 ...doc.data(),
                 id: doc.id,
             }));
-            setPizzas(docsPizzas);
-            setLoadingPizzas(false)
+            setExtras(docsExtras);
+            setLoadingExtras(false)
         })
     }, [])
-    const productos = empanadas.concat(pizzas)
+
+    const productos = empanadas.concat(extras)
 
     const { id } = useParams()
     const productId = productos.find((p)=>p.id== id)
 
-    if(loadingEmpanadas || loadingPizzas){
+    if(loadingEmpanadas || loadingExtras){
         return <div className='flexColCenter'> <Loader/></div> 
     }
 

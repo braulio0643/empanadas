@@ -8,7 +8,7 @@ import Loader from './Loader'
 
 const ItemListContainer = ({mensaje}) => {
     const [loadingEmpanadas, setLoadingEmpanadas] = useState(true)
-    const [loadingPizzas, setLoadingPizzas] = useState(true)
+    
     const [empanadas, setEmpanadas] = useState([])
     useEffect(()=>{
         const db = getFirestore();
@@ -23,22 +23,24 @@ const ItemListContainer = ({mensaje}) => {
         })
 
     }, [])
-    const [pizzas, setPizzas] = useState([])
+
+    const [extras, setExtras] = useState([])
+    const [loadingExtras, setLoadingExtras] = useState(true)
     useEffect(()=>{
         const db = getFirestore();
-        const pizzasCollection = collection(db,"Pizzas");
-        getDocs(pizzasCollection).then((querySnapshot)=>{
-            const docsPizzas = querySnapshot.docs.map((doc)=>({
+        const extrasCollection = collection(db,"Extras");
+        getDocs(extrasCollection).then((querySnapshot)=>{
+            const docsExtras = querySnapshot.docs.map((doc)=>({
                 ...doc.data(),
                 id: doc.id,
             }));
-            setPizzas(docsPizzas);
-            setLoadingPizzas(false)
+            setExtras(docsExtras);
+            setLoadingExtras(false)
         })
     }, [])
     
-    const productos = empanadas.concat(pizzas)
-    console.log(productos)
+    const productos = empanadas.concat(extras)
+    console.log(productos) 
     
     const { id } = useParams()
     console.log(id)
@@ -48,15 +50,15 @@ const ItemListContainer = ({mensaje}) => {
         if(productos.length>0){
             if (id == "empanadas"){
                 return(empanadas)
-            } else if (id == "pizzas"){
-                return(pizzas)
+            } else if (id == "extras"){
+                return(extras)
             } else {
                 return(productos)
             }
         }  
     } 
 
-    if(loadingEmpanadas || loadingPizzas){
+    if(loadingEmpanadas || loadingExtras){
         return <div className='flexColCenter'> <Loader/></div> 
     }
 

@@ -42,7 +42,7 @@ const Cart = () => {
             
           </div>  
 
-          :<Text>No hay productos en el carrito.</Text>
+          :<Text fontSize='4xl'>No hay productos en el carrito.</Text>
 
         }
 

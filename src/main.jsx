@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { ChakraProvider } from '@chakra-ui/react'
+import theme from './chakra';
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -23,7 +24,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
         <App/>
     </ChakraProvider>
 )

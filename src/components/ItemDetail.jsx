@@ -14,7 +14,6 @@ const ItemDetail = ({title, description, price, id}) => {
     const [priceCustom, setPrice] = useState(price)
     const [titleCustom, setTitle] = useState(title)
     const esEmpanadaNormal = (id!= "uxBRJRRAI0ccU2ieFOvz")
-    
 
     const handleCheckbox = (value) => {
         const estaIncluido = empanadaCustom.includes(value + ",")
@@ -35,7 +34,10 @@ const ItemDetail = ({title, description, price, id}) => {
         <div className='flexColCenter'>
             <Card>
                 <CardHeader>
-                    <Heading size ='md'>{esEmpanadaNormal? title : empanadaCustom}</Heading>
+                    <Heading size ='md'>
+                        {esEmpanadaNormal? title : empanadaCustom}
+                    
+                    </Heading>
                 </CardHeader>
                 <CardBody>
                     <Text>{description}</Text>
@@ -55,7 +57,7 @@ const ItemDetail = ({title, description, price, id}) => {
                         carnes.map((p)=> {
                             return(
                                 <Checkbox value={p} onChange={()=>handleCheckbox(p)}
-                                isDisabled={priceCustom == 900 && !empanadaCustom.includes(p + ",")}>{p}</Checkbox>
+                                isDisabled={priceCustom == 1000 && !empanadaCustom.includes(p + ",")}>{p}</Checkbox>
                             )
                         })
                     }
@@ -66,7 +68,7 @@ const ItemDetail = ({title, description, price, id}) => {
                         quesos.map((p)=> {
                             return(
                                 <Checkbox value={p} onChange={()=>handleCheckbox(p)}
-                                isDisabled={priceCustom == 900 && !empanadaCustom.includes(p + ",")}>{p}</Checkbox>
+                                isDisabled={priceCustom == 1000 && !empanadaCustom.includes(p + ",")}>{p}</Checkbox>
                             )
                         })
                     }
@@ -77,7 +79,7 @@ const ItemDetail = ({title, description, price, id}) => {
                         verduras.map((p)=> {
                             return(
                                 <Checkbox value={p} onChange={()=>handleCheckbox(p)}
-                                isDisabled={priceCustom == 900 && !empanadaCustom.includes(p + ",")}>{p}</Checkbox>
+                                isDisabled={priceCustom == 1000 && !empanadaCustom.includes(p + ",")}>{p}</Checkbox>
                             )
                         })
                     }
@@ -88,7 +90,7 @@ const ItemDetail = ({title, description, price, id}) => {
                         agregados.map((p)=> {
                             return(
                                 <Checkbox value={p} onChange={()=>handleCheckbox(p)}
-                                isDisabled={priceCustom == 900 && !empanadaCustom.includes(p + ",")}>{p}</Checkbox>
+                                isDisabled={priceCustom == 1000 && !empanadaCustom.includes(p + ",")}>{p}</Checkbox>
                             )
                         })
                     }

@@ -34,8 +34,8 @@ const NavBar = ({carro}) => {
                             <Link to={"/category/empanadas"}>
                                 <MenuItem>Empanadas</MenuItem>
                             </Link>
-                            <Link to={"/category/pizzas"}>
-                                <MenuItem>Pizzas</MenuItem>
+                            <Link to={"/category/extras"}>
+                                <MenuItem>Extras</MenuItem>
                             </Link>
                         </MenuList>
                     </Menu>
