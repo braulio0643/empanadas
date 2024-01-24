@@ -20,7 +20,7 @@ const CartItem = ({title, price, id, quantity}) => {
                     <Text>${price}</Text>
                     <Text>{quantity} unidades</Text>
                 </CardFooter>
-                    <Button onClick={()=>{removeItem(id)}}>
+                    <Button onClick={()=>{removeItem(title)}}>
                         Eliminar
                     </Button>
             </Card>

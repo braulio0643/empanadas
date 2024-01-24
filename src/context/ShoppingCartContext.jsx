@@ -11,18 +11,20 @@ export const ShoppingCartProvider = ({children}) => {
 
 
     const addItem = (item) => {
-       if(!isInCart(item.id)) {
+       if((!isInCart(item.id)) &&
+       item.quantity > 0 ) {
           cart.push(item)
+          setCartCounter(cartCounter + 1)
+          setPrecioTotal(precioTotal+ item.price* item.quantity)
+          alert(`Se agregaron ${item.quantity} unidades al carrito`)
        }
-       setCartCounter(cartCounter + 1)
-       setPrecioTotal(precioTotal+ item.price* item.quantity)
     }
 
-    const removeItem = (id) => {
+    const removeItem = (title) => {
       for(let i = 0; i < cart.length; i++){
-         if(cart[i].id==id){setPrecioTotal(precioTotal - cart[i].price*cart[i].quantity)}
+         if(cart[i].title==title){setPrecioTotal(precioTotal - cart[i].price*cart[i].quantity)}
       }
-      setCart(cart.filter((p)=>p.id != id))
+      setCart(cart.filter((p)=>p.title != title))
       setCartCounter(cartCounter-1)
     }
 
@@ -33,6 +35,7 @@ export const ShoppingCartProvider = ({children}) => {
     }
 
     const isInCart = (id) => {
+      if(id == "uxBRJRRAI0ccU2ieFOvz"){ return false }
       for(let i = 0; i < cart.length; i++){
          if(cart[i].id == id){
             return(true)

@@ -13,7 +13,6 @@ const ItemCount = ({title, price, id}) => {
     const [contador, setContador] = useState(0)
 
     const comprar= () => {
-        alert(`Se agregaron ${contador} unidades al carrito`)
         //falta hacer que desaparezca el boton de compra
         //falta sweet alert
         const producto = {
