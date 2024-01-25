@@ -5,10 +5,20 @@
 -poner en el inicio lo de las empanadas y pizzasc ustom, destacarlas
 -usar drawer de chakra ui para las compras?
 -como era lo de los ...? desestructurar?
--asegurarme de que sea responsive
+-asegurarme de que sea responsive (el navbar)
 -sweet alert
 -agregar bebidas
 -readme
 -arreglar el numero de al lado del carrito (que se vea mas lindo)
 -agregar imágenes
 -agregar fondos a cada item
+-hacer que el simbolito de carga este en el medio de la pag
+-emprolijar item detail
+-hacer por separado los mensajes del contact, y las ordenes (que aclaren que pidio el cliente)
+-emprolijar cart
+-cambiar color de los elementos de la navbar
+-TITULO Y ICONO DE LA PAG
+-cambiar colores de los botones de chakra
+-hacer mas fachero el form
+-hacer mas fachero el "no hay productos en el carrito"
+-se ve medio cursed la description en item detail

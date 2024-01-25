@@ -5,10 +5,13 @@ import Formulario from './Formulario'
 import {Button, Text} from '@chakra-ui/react'
 
 
+
 const Cart = () => {
   const [formHidden, setForm] = useState(true)
   const { cart, clear, precioTotal} = useContext(CartContext)
   console.log(cart)
+
+
   return (
     //cambiar classname
       <div className='flexColCenter'>  
@@ -17,7 +20,7 @@ const Cart = () => {
           <div>
             {
               formHidden
-              ?<div className='cartItems'>
+              ?<div className='cart'>
                 {cart.map((p)=> { 
                 return(
                     <div key={p.id}>
@@ -26,12 +29,13 @@ const Cart = () => {
                             price = {p.price}
                             id= {p.id}
                             quantity = {p.quantity}
+                            img = {p.img}
                         />
                     </div>                        
                 )
                 })
                 }
-                <Text>Precio total: ${precioTotal}</Text>
+                <Text fontSize='2xl'>Precio total: ${precioTotal}</Text>
                 <div className='cartButtons'>
                       <Button onClick={()=>{clear()}} >Cancelar</Button>
                       <Button onClick={()=>{setForm(false)}} >Finalizar compra</Button>

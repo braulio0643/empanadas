@@ -13,6 +13,7 @@ const ItemList = ({mensaje, productos}) => {
                                 title= {p.title}
                                 price = {p.price}
                                 id= {p.id}
+                                img = {p.img}
                             />
                         </div>                        
                     )

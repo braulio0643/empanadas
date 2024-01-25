@@ -38,9 +38,23 @@ const ItemListContainer = ({mensaje}) => {
             setLoadingExtras(false)
         })
     }, [])
+
+    const [bebidas, setBebidas] = useState([])
+    const [loadingBebidas, setLoadingBebidas] = useState(true)
+    useEffect(()=>{
+        const db = getFirestore();
+        const bebidasCollection = collection(db,"Bebidas");
+        getDocs(bebidasCollection).then((querySnapshot)=>{
+            const docsBebidas = querySnapshot.docs.map((doc)=>({
+                ...doc.data(),
+                id: doc.id,
+            }));
+            setBebidas(docsBebidas);
+            setLoadingBebidas(false)
+        })
+    }, [])
     
-    const productos = empanadas.concat(extras)
-    console.log(productos) 
+    const productos = (empanadas.concat(extras)).concat(bebidas)
     
     const { id } = useParams()
     console.log(id)
@@ -52,14 +66,16 @@ const ItemListContainer = ({mensaje}) => {
                 return(empanadas)
             } else if (id == "extras"){
                 return(extras)
+            } else if (id == "bebidas"){
+                return(bebidas)
             } else {
                 return(productos)
             }
         }  
     } 
 
-    if(loadingEmpanadas || loadingExtras){
-        return <div className='flexColCenter'> <Loader/></div> 
+    if(loadingEmpanadas || loadingExtras || loadingBebidas){
+        return <div className='loader'> <Loader/></div> 
     }
 
     return (

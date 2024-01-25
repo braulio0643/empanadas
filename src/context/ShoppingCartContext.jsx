@@ -1,5 +1,6 @@
 import React from 'react'
 import { createContext, useState , useEffect} from "react";
+import Swal from 'sweetalert2'
 
 export const CartContext = createContext(null)
 
@@ -11,12 +12,15 @@ export const ShoppingCartProvider = ({children}) => {
 
 
     const addItem = (item) => {
-       if((!isInCart(item.id)) &&
-       item.quantity > 0 ) {
+       if((!isInCart(item.id)) && item.quantity > 0 ) {
           cart.push(item)
           setCartCounter(cartCounter + 1)
           setPrecioTotal(precioTotal+ item.price* item.quantity)
-          alert(`Se agregaron ${item.quantity} unidades al carrito`)
+          Swal.fire({
+            title: `Se agregaron ${item.quantity} unidades al carrito`,
+            icon:'info'
+          })
+          console.log(item.img)
        }
     }
 

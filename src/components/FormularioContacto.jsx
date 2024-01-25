@@ -1,36 +1,36 @@
 import {useState, useContext} from 'react'
 import {collection, addDoc, getFirestore} from "firebase/firestore"
-import { Input, Button, FormControl, FormLabel, Text } from '@chakra-ui/react'
+import { Input, Button, FormControl, FormLabel, Textarea } from '@chakra-ui/react'
 import { CartContext } from '../context/ShoppingCartContext'
 import Swal from 'sweetalert2'
 
-const Formulario = () => {
+const FormularioContacto = () => {
 
     const [nombre, setNombre] = useState("")
     const [email, setEmail] = useState("")
-    const {clear, cart} = useContext(CartContext)
+    const [mensaje, setMensaje] = useState("")
     
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        addDoc(ordersCollection, order).then(({ id }) => {
+        addDoc(mensajesCollection, mensaje).then(({ id }) => {
             Swal.fire({
-                title:`Gracias por su compra!`,
+                title:`Gracias por su mensaje!`,
                 text: `Su código de seguimiento es ${id}`,
                 icon: 'success'
             })
-            clear()
+            
         })  
     }
 
     const order = {
         nombre, 
         email,
-        cart
+        mensaje
     }
 
     const db = getFirestore()
-    const ordersCollection = collection(db, "orden")
+    const mensajesCollection = collection(db, "mensaje")
 
     
   return (
@@ -40,8 +40,13 @@ const Formulario = () => {
                 <form action="" onSubmit={handleSubmit} className='form'>
                     <FormLabel>Nombre y apellido:</FormLabel>
                     <Input type="text" placeholder='Nombre' onChange={(e) => setNombre(e.target.value)} value={nombre}/>
+
                     <FormLabel>Correo:</FormLabel>
                     <Input type="email" placeholder='Correo' onChange={(e) => setEmail(e.target.value)} value={email}/>
+
+                    <FormLabel>Mensaje:</FormLabel>
+                    <Textarea placeholder='mensaje' onChange={(e)=> setMensaje(e.target.value)} value={mensaje}/>
+
                     <Button type='submit' colorScheme='blue'>Enviar</Button>
                 </form>
             </FormControl> 
@@ -51,4 +56,4 @@ const Formulario = () => {
   )
 }
 
-export default Formulario
+export default FormularioContacto

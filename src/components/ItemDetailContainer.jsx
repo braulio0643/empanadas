@@ -7,7 +7,6 @@ import Loader from './Loader'
 
 const ItemDetailContainer = () => {
     const [loadingEmpanadas, setLoadingEmpanadas] = useState(true)
-
     const [empanadas, setEmpanadas] = useState([])
     useEffect(()=>{
         const db = getFirestore();
@@ -22,6 +21,7 @@ const ItemDetailContainer = () => {
         })
 
     }, [])
+
     const [extras, setExtras] = useState([])
     const [loadingExtras, setLoadingExtras] = useState(true)
     useEffect(()=>{
@@ -37,22 +37,38 @@ const ItemDetailContainer = () => {
         })
     }, [])
 
-    const productos = empanadas.concat(extras)
+    const [bebidas, setBebidas] = useState([])
+    const [loadingBebidas, setLoadingBebidas] = useState(true)
+    useEffect(()=>{
+        const db = getFirestore();
+        const bebidasCollection = collection(db,"Bebidas");
+        getDocs(bebidasCollection).then((querySnapshot)=>{
+            const docsBebidas = querySnapshot.docs.map((doc)=>({
+                ...doc.data(),
+                id: doc.id,
+            }));
+            setBebidas(docsBebidas);
+            setLoadingBebidas(false)
+        })
+    }, [])
+
+    const productos = (empanadas.concat(extras)).concat(bebidas)
 
     const { id } = useParams()
     const productId = productos.find((p)=>p.id== id)
 
-    if(loadingEmpanadas || loadingExtras){
-        return <div className='flexColCenter'> <Loader/></div> 
+    if(loadingEmpanadas || loadingExtras || loadingBebidas){
+        return <div className='loader'> <Loader/></div> 
     }
 
     return (
-        <div>
+        <div className='flexColCenter'>
             <ItemDetail
                 title= {productId.title}
                 description= {productId.description}
                 price= {productId.price}
                 id = {productId.id}
+                img = {productId.img}
             />
         </div>
     )

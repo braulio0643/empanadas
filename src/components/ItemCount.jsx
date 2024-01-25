@@ -6,7 +6,7 @@ import {
 import { CartContext } from '../context/ShoppingCartContext'
 
 
-const ItemCount = ({title, price, id}) => {
+const ItemCount = ({title, price, id, img}) => {
 
     const {addItem} = useContext(CartContext)
 
@@ -15,11 +15,13 @@ const ItemCount = ({title, price, id}) => {
     const comprar= () => {
         //falta hacer que desaparezca el boton de compra
         //falta sweet alert
+        console.log(img)
         const producto = {
             title: title,
             price: price,
             id: id,
-            quantity: contador
+            quantity: contador,
+            img: img
         }
         addItem(producto)
     }
@@ -38,13 +40,13 @@ const ItemCount = ({title, price, id}) => {
 
     return(
         <div>
-            <Button colorScheme='teal' size='xs' onClick= {restar}>
+            <Button colorScheme='orange' size='sm' onClick= {restar}>
                 -
             </Button>
             <Button onClick={comprar}>
                 Agregar al carrito {contador} unidades
             </Button>
-            <Button colorScheme='teal' size='xs' onClick={sumar}>
+            <Button colorScheme='orange' size='sm' onClick={sumar}>
                 +
             </Button>
         </div>

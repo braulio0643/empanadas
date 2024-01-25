@@ -3,11 +3,10 @@ import {Card,Input, CardHeader, Heading, CardBody, Text, CardFooter, Button, Che
 import ItemCount from './ItemCount'
 import { CartContext } from '../context/ShoppingCartContext'
 
-const ItemDetail = ({title, description, price, id}) => {
+const ItemDetail = ({title, description, price, id, img}) => {
     const carnes= ["Carne de res", "Pollo", "Bondiola", "Atún", "Vacío", "Chorizo", "Jamón", "Panceta"]
-    const quesos= ["Queso cremoso", "Queso cheddar", "Provoleta", "Roquefort"]
+    const quesos= ["Queso cremoso", "Queso cheddar", "Provoleta", "Roquefort", "Mozarella"]
     const verduras= ["Cebolla", "Ajo", "Papa", "Pepino", "Morrón", "Zapallo", "Zanahoria", "Espinaca", "Choclo", "Batata"]
-    const agregados= ["Salsa picante", "Salsa agridulce", "Sal", "Pimienta"]
 
     const {isInCart} = useContext(CartContext)
     const [empanadaCustom, setEmpanadaCustom] = useState("Empanada de ")
@@ -32,27 +31,27 @@ const ItemDetail = ({title, description, price, id}) => {
 
     return(
         <div className='flexColCenter'>
-            <Card>
+            <Card  className='itemDetail'>
                 <CardHeader>
-                    <Heading size ='md'>
+                    <Heading size ='lg'>
                         {esEmpanadaNormal? title : empanadaCustom}
                     
                     </Heading>
                 </CardHeader>
                 <CardBody>
-                    <Text>{description}</Text>
+                    <img src={img} alt="" />
+                    <Text fontSize='2xl'>{description}</Text>
                 </CardBody>
                 <CardFooter>
                     <Text>${priceCustom}</Text>
                 </CardFooter>
-                {isInCart(id) || <ItemCount title= {titleCustom} price = {priceCustom} id= {id}/>
-                }
+                {isInCart(id) || <ItemCount title= {titleCustom} price = {priceCustom} id= {id} img={img}/>}
             </Card>
             {
                 esEmpanadaNormal ||
-                <div>
+                <div className='ingredientesContainer'>
                     <Text>Carnes:</Text>
-                    <Stack direction='row' spacing='10px'>
+                    <Stack direction='row' spacing='10px' className='ingredientes'>
                     {
                         carnes.map((p)=> {
                             return(
@@ -63,7 +62,7 @@ const ItemDetail = ({title, description, price, id}) => {
                     }
                     </Stack>
                     <Text>Quesos:</Text>
-                    <Stack direction='row' spacing='10px'>
+                    <Stack direction='row' spacing='10px' className='ingredientes'>
                     {
                         quesos.map((p)=> {
                             return(
@@ -74,20 +73,9 @@ const ItemDetail = ({title, description, price, id}) => {
                     }
                     </Stack>
                     <Text>Verduras:</Text>
-                    <Stack direction='row' spacing='10px'>
+                    <Stack direction='row' spacing='10px' className='ingredientes'>
                     {
                         verduras.map((p)=> {
-                            return(
-                                <Checkbox value={p} onChange={()=>handleCheckbox(p)}
-                                isDisabled={priceCustom == 1000 && !empanadaCustom.includes(p + ",")}>{p}</Checkbox>
-                            )
-                        })
-                    }
-                    </Stack>
-                    <Text>Agregados:</Text>
-                    <Stack direction='row' spacing='10px'>
-                    {
-                        agregados.map((p)=> {
                             return(
                                 <Checkbox value={p} onChange={()=>handleCheckbox(p)}
                                 isDisabled={priceCustom == 1000 && !empanadaCustom.includes(p + ",")}>{p}</Checkbox>
@@ -102,18 +90,5 @@ const ItemDetail = ({title, description, price, id}) => {
         </div>
     )
 }
-
-/* <CheckboxGroup value={carnesElegidas}>
-                    <Stack>
-                        <Text>Seleccione las carnes que quiera ${carnesElegidas}</Text>
-                        {
-                            carnes.map((p)=>{
-                                return(
-                                <Checkbox value={p}>{p}</Checkbox>
-                                )
-                            })
-                        }
-                    </Stack>
-                </CheckboxGroup> */
 
 export default ItemDetail
