@@ -40,10 +40,10 @@ const ItemDetail = ({title, description, price, id, img}) => {
                 </CardHeader>
                 <CardBody>
                     <img src={img} alt="" />
-                    <Text fontSize='2xl'>{description}</Text>
+                    <Text fontSize='2xl' className='description'>{description}</Text>
                 </CardBody>
                 <CardFooter>
-                    <Text>${priceCustom}</Text>
+                    <Text fontSize='xl'>${priceCustom}</Text>
                 </CardFooter>
                 {isInCart(id) || <ItemCount title= {titleCustom} price = {priceCustom} id= {id} img={img}/>}
             </Card>

@@ -7,7 +7,7 @@ const Item = ({title, price, id, img}) => {
     return(
         <div>
             <Card  className='shopItem'>
-                <CardHeader>
+                <CardHeader className='header'>
                     <Heading size ='lg'>{title}</Heading>
                 </CardHeader>
                 <CardBody>
@@ -17,8 +17,8 @@ const Item = ({title, price, id, img}) => {
                     <Text fontSize='2xl'>${price}</Text>
                 </CardFooter>
                 <Link to={buttonId}>
-                    <Button>
-                        <Text>Ver detalles</Text>
+                    <Button colorScheme='orange'>
+                        <Text fontSize='xl' color='black'>Ver detalles</Text>
                     </Button>
                 </Link>
                 

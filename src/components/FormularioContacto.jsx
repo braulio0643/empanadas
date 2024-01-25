@@ -1,7 +1,6 @@
 import {useState, useContext} from 'react'
 import {collection, addDoc, getFirestore} from "firebase/firestore"
 import { Input, Button, FormControl, FormLabel, Textarea } from '@chakra-ui/react'
-import { CartContext } from '../context/ShoppingCartContext'
 import Swal from 'sweetalert2'
 
 const FormularioContacto = () => {
@@ -13,14 +12,17 @@ const FormularioContacto = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        addDoc(mensajesCollection, mensaje).then(({ id }) => {
+        addDoc(mensajesCollection, order).then(({ id }) => {
             Swal.fire({
                 title:`Gracias por su mensaje!`,
                 text: `Su código de seguimiento es ${id}`,
                 icon: 'success'
             })
-            
-        })  
+            setNombre("")
+            setMensaje("")
+            setEmail("") 
+        }) 
+        
     }
 
     const order = {
