@@ -46,7 +46,7 @@ const Cart = () => {
             
           </div>  
 
-          :<Text fontSize='4xl'>No hay productos en el carrito.</Text>
+          :<Text fontSize='5xl' className='noProducts'>No hay productos en el carrito.</Text>
 
         }
 

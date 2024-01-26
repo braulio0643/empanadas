@@ -11,6 +11,7 @@ import {
     MenuGroup,
     MenuOptionGroup,
     MenuDivider,
+    Text
   } from '@chakra-ui/react'
 
 const NavBar = ({carro}) => {
@@ -22,30 +23,34 @@ const NavBar = ({carro}) => {
                 </Link>
 
                 <Link to={"/"}>
-                    <li>Inicio</li>
+                    <li><p>INICIO</p></li>
                 </Link>
 
                 <li>
                     <Menu>
                         <MenuButton>
-                            Categoría
+                            <p>MENÚ</p>
+                            
                         </MenuButton>
                         <MenuList>
+                            <Link to={"/category/all"}>
+                                <MenuItem><p>TODO</p></MenuItem>
+                            </Link>
                             <Link to={"/category/empanadas"}>
-                                <MenuItem>Empanadas</MenuItem>
+                                <MenuItem> <p>EMPANADAS</p></MenuItem>
                             </Link>
                             <Link to={"/category/extras"}>
-                                <MenuItem>Extras</MenuItem>
+                                <MenuItem><p>EXTRAS</p></MenuItem>
                             </Link>
                             <Link to={"/category/bebidas"}>
-                                <MenuItem>Bebidas</MenuItem>
+                                <MenuItem><p>BEBIDAS</p></MenuItem>
                             </Link>
                         </MenuList>
                     </Menu>
                 </li>
                 
                 <Link to={"/contact"}>
-                    <li>Contacto</li>
+                    <li><p>CONTACTO</p></li>
                 </Link>
                 
                 <Link to={"/cart"}>

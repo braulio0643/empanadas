@@ -41,15 +41,15 @@ const FormularioContacto = () => {
             <FormControl className='flexColCenter'>
                 <form action="" onSubmit={handleSubmit} className='form'>
                     <FormLabel>Nombre y apellido:</FormLabel>
-                    <Input type="text" placeholder='Nombre' onChange={(e) => setNombre(e.target.value)} value={nombre}/>
+                    <Input bg='white' type="text" placeholder='Nombre' onChange={(e) => setNombre(e.target.value)} value={nombre}/>
 
                     <FormLabel>Correo:</FormLabel>
-                    <Input type="email" placeholder='Correo' onChange={(e) => setEmail(e.target.value)} value={email}/>
+                    <Input bg='white' type="email" placeholder='Correo' onChange={(e) => setEmail(e.target.value)} value={email}/>
 
                     <FormLabel>Mensaje:</FormLabel>
-                    <Textarea placeholder='mensaje' onChange={(e)=> setMensaje(e.target.value)} value={mensaje}/>
+                    <Textarea bg='white' placeholder='mensaje' onChange={(e)=> setMensaje(e.target.value)} value={mensaje}/>
 
-                    <Button type='submit' colorScheme='blue'>Enviar</Button>
+                    <Button type='submit' colorScheme='orange'>Enviar</Button>
                 </form>
             </FormControl> 
         }

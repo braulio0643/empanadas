@@ -1,8 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+EmpanadaCraft es un e-commerce de empanadas, en el que te podés pedir 
+empanadas personalizadas (con los ingredientes que quieras), o empanadas clásicas, con gustos como carne, jamón y queso, pollo, etc. También podés pedir bebidas y salsas.
+Por otro lado, si tenés alguna consulta o sugerencia, podés mandarla desde el menú de contacto.

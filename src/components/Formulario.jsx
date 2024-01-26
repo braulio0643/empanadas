@@ -39,10 +39,10 @@ const Formulario = () => {
             <FormControl className='flexColCenter'>
                 <form action="" onSubmit={handleSubmit} className='form'>
                     <FormLabel>Nombre y apellido:</FormLabel>
-                    <Input type="text" placeholder='Nombre' onChange={(e) => setNombre(e.target.value)} value={nombre}/>
+                    <Input bg='white' type="text" placeholder='Nombre' onChange={(e) => setNombre(e.target.value)} value={nombre}/>
                     <FormLabel>Correo:</FormLabel>
-                    <Input type="email" placeholder='Correo' onChange={(e) => setEmail(e.target.value)} value={email}/>
-                    <Button type='submit' colorScheme='blue'>Enviar</Button>
+                    <Input bg='white' type="email" placeholder='Correo' onChange={(e) => setEmail(e.target.value)} value={email}/>
+                    <Button type='submit' colorScheme='orange'>Enviar</Button>
                 </form>
             </FormControl> 
         }
