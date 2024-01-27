@@ -8,7 +8,7 @@ const Formulario = () => {
 
     const [nombre, setNombre] = useState("")
     const [email, setEmail] = useState("")
-    const {clear, cart} = useContext(CartContext)
+    const {clear, cart, precioTotal} = useContext(CartContext)
     
 
     const handleSubmit = (e) => {
@@ -25,7 +25,8 @@ const Formulario = () => {
 
     const order = {
         cliente: {nombre, email},
-        items: cart
+        items: cart,
+        precioTotal
     }
 
     const db = getFirestore()
