@@ -24,9 +24,8 @@ const Formulario = () => {
     }
 
     const order = {
-        nombre, 
-        email,
-        cart
+        cliente: {nombre, email},
+        items: cart
     }
 
     const db = getFirestore()
