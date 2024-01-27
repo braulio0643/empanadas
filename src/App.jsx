@@ -13,7 +13,7 @@ import Home from './components/Home';
 const App = () => {
   const carro = 1
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/empanadas/'>
       <ShoppingCartContext>
           <NavBar carro={carro}/>
           <Routes>
